@@ -16,7 +16,8 @@ setup(
         ],
     },
     install_requires=[
-        'clint'
+        'clint',
+        'requests'
     ]
 )
 

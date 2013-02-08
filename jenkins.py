@@ -89,13 +89,15 @@ def _get_latest_build_url(api_response, default=None):
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Open a Jenkins job")
+    parser = argparse.ArgumentParser(description=
+                                     "Open current build of a Jenkins job")
     parser.add_argument('remote_name', type=str, default='origin', nargs='?',
                         help="Name of the remote to open")
     parser.add_argument('-b', '--branch', type=str, default=None, nargs='?',
                         help="Git branch to open (defaults to current branch)")
+    parser.add_argument('-j', '--job', action='store_true',
+                        help="Open the job homepage, not the current build")
     args = parser.parse_args()
-
 
     remote_url = _get_remote_url(args.remote_name)
     match = _parse_git_remote_url(remote_url)
@@ -105,7 +107,8 @@ def main():
                      branch)
 
     r = requests.get(base_url + '/api/json')
-    webbrowser.open_new_tab(_get_latest_build_url(r.json()))
+    url = base_url if args.job else _get_latest_build_url(r.json())
+    webbrowser.open_new_tab(url)
 
 
 if __name__ == "__main__":
