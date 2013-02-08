@@ -23,3 +23,19 @@
         jenkins
 
 Will open up the latest test run in your browser.
+
+### Usage
+
+    $ jenkins -h
+    usage: jenkins [-h] [-b BRANCH] [-j] [remote_name]
+
+    Open current build of a Jenkins job
+
+    positional arguments:
+      remote_name           Name of the remote to open
+
+    optional arguments:
+      -h, --help            show this help message and exit
+      -b BRANCH, --branch BRANCH
+                            Git branch to open (defaults to current branch)
+      -j, --job             Open the job homepage, not the current build

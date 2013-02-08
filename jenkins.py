@@ -93,7 +93,7 @@ def main():
                                      "Open current build of a Jenkins job")
     parser.add_argument('remote_name', type=str, default='origin', nargs='?',
                         help="Name of the remote to open")
-    parser.add_argument('-b', '--branch', type=str, default=None, nargs='?',
+    parser.add_argument('-b', '--branch', type=str, default=None,
                         help="Git branch to open (defaults to current branch)")
     parser.add_argument('-j', '--job', action='store_true',
                         help="Open the job homepage, not the current build")
