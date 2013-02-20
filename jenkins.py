@@ -52,7 +52,7 @@ def _get_jenkins_host():
     try:
         config.readfp(open(os.path.expanduser("~") + '/.jenkinsrc'))
     except IOError:
-        print colored.red("""Error: Config file .sshboxrc not found.
+        print colored.red("""Error: Config file .jenkinsrc not found.
 
 Add your Jenkins URL configuration to a .jenkinsrc file like so:
 
