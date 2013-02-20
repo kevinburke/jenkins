@@ -2,6 +2,7 @@
 
 import argparse
 import ConfigParser
+import json
 import os
 import re
 import subprocess
@@ -107,7 +108,7 @@ def main():
                      branch)
 
     r = requests.get(base_url + '/api/json')
-    url = base_url if args.job else _get_latest_build_url(r.json())
+    url = base_url if args.job else _get_latest_build_url(json.loads(r.content))
     webbrowser.open_new_tab(url)
 
 
