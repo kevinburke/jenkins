@@ -108,7 +108,12 @@ def main():
                      branch)
 
     r = requests.get(base_url + '/api/json')
-    url = base_url if args.job else _get_latest_build_url(json.loads(r.content))
+    try:
+        d = json.loads(r.content)
+    except:
+        print "Couldn't decode\n\n{}\n\n as JSON. Exiting".format(r.content)
+        sys.exit(2)
+    url = base_url if args.job else _get_latest_build_url(d)
     webbrowser.open_new_tab(url)
 
 
